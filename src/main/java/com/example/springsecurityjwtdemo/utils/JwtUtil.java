@@ -11,6 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * This class is responsible for creating JWT token and validating
+ *
+ */
 @Service
 public class JwtUtil {
 
@@ -41,6 +45,12 @@ public class JwtUtil {
         return createToken(claims, username);
     }
 
+    /**
+     * this token will be valid for 1000 * 60 * 60 * 10 i.e. 10 hr
+     * @param claims
+     * @param subject
+     * @return
+     */
     private String createToken(Map<String, Object> claims, String subject) {
 
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
@@ -48,6 +58,12 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS256, secret).compact();
     }
 
+    /**
+     * Method to valid the token
+     * @param token
+     * @param userDetails
+     * @return
+     */
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));

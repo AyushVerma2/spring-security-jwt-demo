@@ -10,10 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * this class is responsible for test the rest endpoints
+ */
 @RestController
 public class UserController {
+
     @Autowired
     private JwtUtil jwtUtil;
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -25,6 +30,8 @@ public class UserController {
     @PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
         try {
+
+
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
             );

@@ -16,6 +16,10 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * this is spring class ,it will have all the web security config.
+ *
+ */
 @Configuration
 @EnableAutoConfiguration
 
@@ -23,6 +27,7 @@ public class SecutrityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserDetailService userDetailService;
+
     @Autowired
     JwtFilter jwtFilter;
 
@@ -30,6 +35,11 @@ public class SecutrityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailService);
 
     }
+
+    /**
+     * this is req if springboot is 2+ version
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder(){
         return NoOpPasswordEncoder.getInstance();
@@ -42,6 +52,12 @@ public class SecutrityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // this is disabling the validation check for all path which is not /authenticate
+        //it should have bearer token
+        // but if the path has authenticate then it must have user name and passwd.. adn the jwt token will
+        //be created
+        // also it make jwt token statless
+        // so adding filter based on path
         http.csrf().disable().authorizeRequests().antMatchers("/authenticate")
                 .permitAll().anyRequest().authenticated()
                 .and().exceptionHandling().and().sessionManagement()

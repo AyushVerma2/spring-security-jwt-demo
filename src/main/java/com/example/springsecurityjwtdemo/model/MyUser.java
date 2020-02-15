@@ -15,6 +15,9 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @ToString
 @Table(name ="USER_TABLE")
+/**
+ * USer entity
+ */
 public class MyUser {
     @Id
     private int id;

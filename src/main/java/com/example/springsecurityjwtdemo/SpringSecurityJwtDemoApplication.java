@@ -15,6 +15,7 @@ public class SpringSecurityJwtDemoApplication {
 	@Autowired
 	UserRepo userRepo;
 
+	// this will init db with these user as initial value
 	@PostConstruct
 
 	public void init(){
