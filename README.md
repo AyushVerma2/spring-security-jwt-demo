@@ -7,7 +7,7 @@
 
 
 #### Dependency:
-''' xml
+```xml 
 <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -30,7 +30,7 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
 		</dependency>
-'''
+```
 
 
 ### Test:
