@@ -1,26 +1,36 @@
 package com.example.springsecurityjwtdemo.controller;
 
-import com.example.springsecurityjwtdemo.model.MyUser;
-import com.example.springsecurityjwtdemo.repo.UserRepo;
+import com.example.springsecurityjwtdemo.model.AuthRequest;
+import com.example.springsecurityjwtdemo.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 public class UserController {
     @Autowired
-    UserRepo userRepo;
+    private JwtUtil jwtUtil;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-    @GetMapping("/all")
-    public List<MyUser> getUser(){
-        return  userRepo.findAll();
-
-    }
     @GetMapping("/")
-    public String welcome(){
-        return  "welcome to spring security";
+    public String welcome() {
+        return "Welcome to javatechie !!";
+    }
 
+    @PostMapping("/authenticate")
+    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
+            );
+        } catch (Exception ex) {
+            throw new Exception("inavalid username/password");
+        }
+        return jwtUtil.generateToken(authRequest.getUserName());
     }
 }
