@@ -48,13 +48,14 @@ To Authentica user :
             url:http://localhost:9193/
 	    
 ##### GET SINGLE USER DETAILS:
-
+```xml 
 GET: 
 http://localhost:9193/user?user=user1
 Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTU4MTgxNTcxMCwiaWF0IjoxNTgxNzc5NzEwfQ.vzh8e51Qtm-_1jF5o9swlXnl6R1VNF6kBdcxLyXl3fs
 
 Response:
 User detail  :: MyUser(id=1, username=user1, password=user1)
+```
 
 
 
