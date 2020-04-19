@@ -20,12 +20,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-    <dependency>
+                 <dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-    <dependency>
+                <dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
@@ -46,3 +46,15 @@ To Authentica user :
             Header: Content-Type:application/json
             Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTU4MTgxNTcxMCwiaWF0IjoxNTgxNzc5NzEwfQ.vzh8e51Qtm-_1jF5o9swlXnl6R1VNF6kBdcxLyXl3fs
             url:http://localhost:9193/
+	    
+##### GET SINGLE USER DETAILS:
+
+GET: 
+http://localhost:9193/user?user=user1
+Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTU4MTgxNTcxMCwiaWF0IjoxNTgxNzc5NzEwfQ.vzh8e51Qtm-_1jF5o9swlXnl6R1VNF6kBdcxLyXl3fs
+
+Response:
+User detail  :: MyUser(id=1, username=user1, password=user1)
+
+
+
