@@ -21,7 +21,7 @@ public class UserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         MyUser user =userRepo.findByUsername(username);
-        //creat user object provide by spring using credential give
+        //create user object provide by spring using credential give
 
         return new User(user.getUsername(),user.getPassword(),new ArrayList<>());
 
