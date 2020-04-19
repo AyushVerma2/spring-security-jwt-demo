@@ -45,7 +45,7 @@ public class UserController {
     @PostMapping("/create")
     public ResponseEntity create(@RequestBody MyUser myuser
     ) {
-        userRepo.save(myuser) ;
+        MyUser myUser =userRepo.save(myuser) ;
         return ResponseEntity.ok(HttpStatus.OK);
 
     }
