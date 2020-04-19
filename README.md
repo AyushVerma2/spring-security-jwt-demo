@@ -56,6 +56,8 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTU4MTgxNT
 Response:
 User detail  :: MyUser(id=1, username=user1, password=user1)
 ```
-
+##### Acutator
+GET:  localhost:9193/actuator/health
+Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMSIsImV4cCI6MTU4MTgxNTcxMCwiaWF0IjoxNTgxNzc5NzEwfQ.vzh8e51Qtm-_1jF5o9swlXnl6R1VNF6kBdcxLyXl3fs
 
 
